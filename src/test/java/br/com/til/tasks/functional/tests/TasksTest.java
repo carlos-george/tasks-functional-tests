@@ -166,7 +166,7 @@ public class TasksTest {
 			
 			WebElement elementInputDueDate = webDriver.findElement(By.id("dueDate"));
 			
-			elementInputDueDate.sendKeys("15/10/2020");
+			elementInputDueDate.sendKeys("");
 			
 			WebElement elementSave = webDriver.findElement(By.id("saveButton"));
 			
