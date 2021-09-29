@@ -2,13 +2,16 @@ package br.com.til.tasks.functional.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class TasksTest {
 
@@ -21,9 +24,14 @@ public class TasksTest {
 
 	private static final String ERROR_MESSAGE_DUEDATE_VAZIO = "Fill the due date";
 	
-	 public WebDriver acessarApp() {
-		System.setProperty("webdriver.chrome.driver", "/Volumes/Macintosh HD/Projetos/Devops/chromedriver");
-		WebDriver webDriver = new ChromeDriver();
+	 public WebDriver acessarApp() throws MalformedURLException {
+//		System.setProperty("webdriver.chrome.driver", "/Volumes/Macintosh HD/Projetos/Devops/chromedriver");
+//		WebDriver webDriver = new ChromeDriver();
+		
+		 DesiredCapabilities cap = DesiredCapabilities.chrome();
+		 WebDriver webDriver = new RemoteWebDriver(new URL("http://192.168.15.4:4444/wd/hub"), cap );
+		 
+		 
 		
 		webDriver.navigate().to("http:/localhost:8001/tasks");
 		
@@ -33,7 +41,7 @@ public class TasksTest {
 	 }
 
 	@Test
-	public void deveSalvarTarefaComSucesso() {
+	public void deveSalvarTarefaComSucesso() throws MalformedURLException {
 
 		WebDriver webDriver = acessarApp();
 		
@@ -72,7 +80,7 @@ public class TasksTest {
 	}
 	
 	@Test
-	public void naoDeveSalvarTarefaTaskVazio() {
+	public void naoDeveSalvarTarefaTaskVazio() throws MalformedURLException {
 		
 		WebDriver webDriver = acessarApp();
 		
@@ -111,7 +119,7 @@ public class TasksTest {
 	}
 	
 	@Test
-	public void naoDeveSalvarTarefaDataPast() {
+	public void naoDeveSalvarTarefaDataPast() throws MalformedURLException {
 		
 		WebDriver webDriver = acessarApp();
 		
@@ -150,7 +158,7 @@ public class TasksTest {
 	}
 	
 	@Test
-	public void naoDeveSalvarTarefaDataVazia() {
+	public void naoDeveSalvarTarefaDataVazia() throws MalformedURLException {
 		
 		WebDriver webDriver = acessarApp();
 		
