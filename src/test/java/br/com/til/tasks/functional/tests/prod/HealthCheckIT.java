@@ -23,8 +23,8 @@ public class HealthCheckIT {
 		 
 		try {
 			
-			webDriver.navigate().to("http:/192.168.15.3.:8003/tasks");
-//			webDriver.navigate().to("http:/192.168.0.8:8003/tasks");
+//			webDriver.navigate().to("http:/192.168.15.3.:8003/tasks");
+			webDriver.navigate().to("http:/192.168.0.6:8003/tasks");
 			
 			webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			
