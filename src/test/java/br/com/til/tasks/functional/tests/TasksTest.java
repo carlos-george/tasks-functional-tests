@@ -3,15 +3,13 @@ package br.com.til.tasks.functional.tests;
 import static org.junit.Assert.assertEquals;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TasksTest {
 
@@ -25,11 +23,11 @@ public class TasksTest {
 	private static final String ERROR_MESSAGE_DUEDATE_VAZIO = "Fill the due date";
 	
 	 public WebDriver acessarApp() throws MalformedURLException {
-//		System.setProperty("webdriver.chrome.driver", "/Volumes/Macintosh HD/Projetos/Devops/chromedriver");
-//		WebDriver webDriver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", "/Volumes/Macintosh HD/Projetos/Devops/chromedriver");
+		WebDriver webDriver = new ChromeDriver();
 		
-		 DesiredCapabilities cap = DesiredCapabilities.chrome();
-		 WebDriver webDriver = new RemoteWebDriver(new URL("http://192.168.0.8:4444/wd/hub"), cap );
+//		 DesiredCapabilities cap = DesiredCapabilities.chrome();
+//		 WebDriver webDriver = new RemoteWebDriver(new URL("http://192.168.0.8:4444/wd/hub"), cap );
 		 
 		 
 		
