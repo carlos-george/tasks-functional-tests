@@ -31,7 +31,8 @@ public class TasksTest {
 		 
 		 
 		
-		webDriver.navigate().to("http:/192.168.0.8:8001/tasks");
+//		webDriver.navigate().to("http:/192.168.0.8:8001/tasks");
+		webDriver.navigate().to("http:/192.168.15.3.:8003/tasks");
 		
 		webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		
