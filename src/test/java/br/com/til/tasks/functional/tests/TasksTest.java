@@ -64,8 +64,6 @@ public class TasksTest {
 			
 			WebElement elementMessage = webDriver.findElement(By.id("message"));
 			
-			System.out.println(elementMessage.getText());
-			
 			String message = elementMessage.getText();
 			
 			assertEquals(SUCCESS_MESSAGE, message);
@@ -102,8 +100,6 @@ public class TasksTest {
 			elementSave.click();
 			
 			WebElement elementMessage = webDriver.findElement(By.id("message"));
-			
-			System.out.println(elementMessage.getText());
 			
 			String message = elementMessage.getText();
 			
@@ -142,8 +138,6 @@ public class TasksTest {
 			
 			WebElement elementMessage = webDriver.findElement(By.id("message"));
 			
-			System.out.println(elementMessage.getText());
-			
 			String message = elementMessage.getText();
 			
 			assertEquals(ERROR_MESSAGE_DUEDATE_PAST, message);
@@ -181,11 +175,58 @@ public class TasksTest {
 			
 			WebElement elementMessage = webDriver.findElement(By.id("message"));
 			
-			System.out.println(elementMessage.getText());
-			
 			String message = elementMessage.getText();
 			
 			assertEquals(ERROR_MESSAGE_DUEDATE_VAZIO, message);
+			
+		} finally {
+			
+			webDriver.quit();
+		}
+		
+		
+	}
+	
+	@Test
+	public void deveremovertarefaComsucesso() throws MalformedURLException {
+		
+		WebDriver webDriver = acessarApp();
+		
+		try {
+			
+			WebElement element = webDriver.findElement(By.id("addTodo"));
+			
+			element.click();
+			
+			WebElement elementInput = webDriver.findElement(By.id("task"));
+			
+			elementInput.sendKeys("Test with selenium");
+			
+			WebElement elementInputDueDate = webDriver.findElement(By.id("dueDate"));
+			
+			elementInputDueDate.sendKeys("15/10/2022");
+			
+			WebElement elementSave = webDriver.findElement(By.id("saveButton"));
+			
+			elementSave.click();
+			
+			WebElement elementMessage = webDriver.findElement(By.id("message"));
+			
+			String message = elementMessage.getText();
+			
+			assertEquals(SUCCESS_MESSAGE, message);
+			
+			//remove task
+			
+			WebElement removeButton = webDriver.findElement(By.xpath("//a[@class='btn btn-outline-danger btn-sm']"));
+			
+			removeButton.click();
+			
+			elementMessage = webDriver.findElement(By.id("message"));
+			
+			message = elementMessage.getText();
+			
+			assertEquals(SUCCESS_MESSAGE, message);
 			
 		} finally {
 			
